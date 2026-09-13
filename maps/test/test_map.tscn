@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://do5qhgsx276th"]
+
+[ext_resource type="PackedScene" uid="uid://bgyk8cnevw3n3" path="res://characters/Alex/player.tscn" id="1_hw3r6"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_pucjv"]
+size = Vector2(50, 50)
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_pucjv"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_pucjv"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_pucjv"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_l80g2"]
+sky_top_color = Color(0.33914587, 0.5644474, 0.9031309, 1)
+sky_horizon_color = Color(0.85671973, 0.8606268, 0.8684334, 1)
+sky_curve = 0.1
+
+[sub_resource type="Sky" id="Sky_8b652"]
+sky_material = SubResource("ProceduralSkyMaterial_l80g2")
+
+[sub_resource type="Environment" id="Environment_pucjv"]
+background_mode = 2
+sky = SubResource("Sky_8b652")
+ambient_light_sky_contribution = 0.25
+fog_depth_begin = 200.0
+fog_depth_end = 4000.0
+
+[node name="TestMap" type="Node3D" unique_id=1433595041]
+
+[node name="Player" parent="." unique_id=320379393 instance=ExtResource("1_hw3r6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9059659, 0)
+
+[node name="Floor" type="MeshInstance3D" parent="." unique_id=354691218]
+mesh = SubResource("PlaneMesh_pucjv")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Floor" unique_id=1083176235]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor/StaticBody3D" unique_id=322889704]
+shape = SubResource("WorldBoundaryShape3D_pucjv")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=2100034540]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5024066, -6.600424)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D" unique_id=831324966]
+mesh = SubResource("BoxMesh_pucjv")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1318501990]
+shape = SubResource("BoxShape3D_pucjv")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=895054307]
+environment = SubResource("Environment_pucjv")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment" unique_id=2026062326]
+transform = Transform3D(1, 0, 0, 0, -0.9396926, 0.34202015, 0, -0.34202015, -0.9396926, 0, 0, 0)

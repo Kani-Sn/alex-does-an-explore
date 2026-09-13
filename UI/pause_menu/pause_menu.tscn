@@ -1,0 +1,267 @@
+[gd_scene format=3 uid="uid://ccpjytgvt1ynv"]
+
+[ext_resource type="Theme" uid="uid://dt3q06uplryn8" path="res://UI/Themes/UI_Theme.tres" id="1_2n0y6"]
+[ext_resource type="Script" uid="uid://crjk0sctq7h7c" path="res://UI/pause_menu/PauseMenu.cs" id="2_mc6od"]
+[ext_resource type="Script" uid="uid://cpi0fyeuqimmf" path="res://UI/pause_menu/PlayerSettings.cs" id="3_mc6od"]
+[ext_resource type="Script" uid="uid://inb0xaegk2k5" path="res://UI/pause_menu/GraphicSettings.cs" id="4_kju1d"]
+
+[node name="Pausemenu" type="Control" unique_id=494135152]
+process_mode = 2
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("1_2n0y6")
+script = ExtResource("2_mc6od")
+
+[node name="Default" type="Panel" parent="." unique_id=1090672039]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Default" unique_id=1141383471]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -75.0
+offset_top = -20.0
+offset_right = 75.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 30
+
+[node name="Resume" type="Button" parent="Default/VBoxContainer" unique_id=1684038318]
+custom_minimum_size = Vector2(150, 40)
+layout_mode = 2
+theme = ExtResource("1_2n0y6")
+text = "Resume"
+
+[node name="Settings" type="Button" parent="Default/VBoxContainer" unique_id=1912955045]
+custom_minimum_size = Vector2(150, 40)
+layout_mode = 2
+theme = ExtResource("1_2n0y6")
+text = "Settings"
+
+[node name="Quit" type="Button" parent="Default/VBoxContainer" unique_id=1095197777]
+custom_minimum_size = Vector2(150, 40)
+layout_mode = 2
+theme = ExtResource("1_2n0y6")
+text = "Quit"
+
+[node name="Settings" type="Panel" parent="." unique_id=560847534]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_2n0y6")
+
+[node name="TabContainer" type="TabContainer" parent="Settings" unique_id=168399765]
+propagate_maximum_size = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+current_tab = 1
+
+[node name="Player Settings" type="TabBar" parent="Settings/TabContainer" unique_id=1856194781]
+visible = false
+layout_mode = 2
+script = ExtResource("3_mc6od")
+metadata/_tab_index = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Settings/TabContainer/Player Settings" unique_id=900577367]
+layout_mode = 0
+offset_right = 250.0
+offset_bottom = 64.0
+
+[node name="Base Speed" type="HBoxContainer" parent="Settings/TabContainer/Player Settings/VBoxContainer" unique_id=859283310]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Label" type="Label" parent="Settings/TabContainer/Player Settings/VBoxContainer/Base Speed" unique_id=268826832]
+layout_mode = 2
+text = "Base Speed"
+
+[node name="OptionButton" type="OptionButton" parent="Settings/TabContainer/Player Settings/VBoxContainer/Base Speed" unique_id=608793375]
+layout_mode = 2
+size_flags_horizontal = 10
+theme = ExtResource("1_2n0y6")
+selected = 0
+item_count = 4
+popup/item_0/text = "1.3"
+popup/item_0/id = 0
+popup/item_1/text = "2"
+popup/item_1/id = 1
+popup/item_2/text = "3"
+popup/item_2/id = 2
+popup/item_3/text = "4"
+popup/item_3/id = 3
+
+[node name="Run Toggle" type="HBoxContainer" parent="Settings/TabContainer/Player Settings/VBoxContainer" unique_id=1185420390]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Label" type="Label" parent="Settings/TabContainer/Player Settings/VBoxContainer/Run Toggle" unique_id=1064055765]
+layout_mode = 2
+text = "Toggle Run"
+
+[node name="RunToggleCheck" type="CheckBox" parent="Settings/TabContainer/Player Settings/VBoxContainer/Run Toggle" unique_id=866740152]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 10
+button_pressed = true
+
+[node name="Graphic Settings" type="TabBar" parent="Settings/TabContainer" unique_id=1863156617 node_paths=PackedStringArray("FOVLabel", "CameraSensLabel")]
+layout_mode = 2
+script = ExtResource("4_kju1d")
+FOVLabel = NodePath("HBoxContainer/VBoxContainer2/Camera FOV/CameraFOVLabel")
+CameraSensLabel = NodePath("HBoxContainer/VBoxContainer2/Camera Sens/CameraSensLabel")
+metadata/_tab_index = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Settings/TabContainer/Graphic Settings" unique_id=1625898256]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Settings/TabContainer/Graphic Settings/HBoxContainer" unique_id=867856746]
+layout_mode = 2
+
+[node name="Camera FOV" type="HBoxContainer" parent="Settings/TabContainer/Graphic Settings/HBoxContainer/VBoxContainer2" unique_id=1281965244]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Label" type="Label" parent="Settings/TabContainer/Graphic Settings/HBoxContainer/VBoxContainer2/Camera FOV" unique_id=1154349886]
+layout_mode = 2
+text = "Camera FOV"
+
+[node name="CameraFOVSlider" type="HSlider" parent="Settings/TabContainer/Graphic Settings/HBoxContainer/VBoxContainer2/Camera FOV" unique_id=1256246201]
+custom_minimum_size = Vector2(175, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+min_value = 50.0
+value = 75.0
+rounded = true
+scrollable = false
+
+[node name="CameraFOVLabel" type="Label" parent="Settings/TabContainer/Graphic Settings/HBoxContainer/VBoxContainer2/Camera FOV" unique_id=1779414486]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+text = "100"
+horizontal_alignment = 2
+
+[node name="Camera Sens" type="HBoxContainer" parent="Settings/TabContainer/Graphic Settings/HBoxContainer/VBoxContainer2" unique_id=1712076003]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Label" type="Label" parent="Settings/TabContainer/Graphic Settings/HBoxContainer/VBoxContainer2/Camera Sens" unique_id=657638524]
+layout_mode = 2
+text = "Camera Sens"
+
+[node name="CameraSensSlider" type="HSlider" parent="Settings/TabContainer/Graphic Settings/HBoxContainer/VBoxContainer2/Camera Sens" unique_id=982649136]
+custom_minimum_size = Vector2(175, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+min_value = 0.01
+max_value = 1.0
+step = 0.01
+value = 0.09999999999999999
+scrollable = false
+
+[node name="CameraSensLabel" type="Label" parent="Settings/TabContainer/Graphic Settings/HBoxContainer/VBoxContainer2/Camera Sens" unique_id=1467738692]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+text = "0.01"
+horizontal_alignment = 2
+
+[node name="VSeparator" type="VSeparator" parent="Settings/TabContainer/Graphic Settings/HBoxContainer" unique_id=1760919869]
+layout_mode = 2
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="Settings/TabContainer/Graphic Settings/HBoxContainer" unique_id=1356995606]
+layout_mode = 2
+
+[node name="Camera FOV" type="HBoxContainer" parent="Settings/TabContainer/Graphic Settings/HBoxContainer/VBoxContainer3" unique_id=372114467]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Label" type="Label" parent="Settings/TabContainer/Graphic Settings/HBoxContainer/VBoxContainer3/Camera FOV" unique_id=127993916]
+layout_mode = 2
+text = "Camera FOV"
+
+[node name="CameraFOVSlider" type="HSlider" parent="Settings/TabContainer/Graphic Settings/HBoxContainer/VBoxContainer3/Camera FOV" unique_id=1300037788]
+custom_minimum_size = Vector2(175, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+min_value = 50.0
+value = 75.0
+rounded = true
+scrollable = false
+
+[node name="CameraFOVLabel" type="Label" parent="Settings/TabContainer/Graphic Settings/HBoxContainer/VBoxContainer3/Camera FOV" unique_id=1890548350]
+layout_mode = 2
+text = "75"
+
+[node name="Cheats" type="TabBar" parent="Settings/TabContainer" unique_id=1880665063]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 2
+
+[node name="Label" type="Label" parent="Settings/TabContainer/Cheats" unique_id=1160450018]
+layout_mode = 0
+offset_right = 222.0
+offset_bottom = 23.0
+text = "Placeholder Cheat Settings
+Cheats are fun or assistive things for the player."
+
+[node name="Back" type="Button" parent="Settings" unique_id=1555983927]
+custom_minimum_size = Vector2(150, 40)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -127.0
+offset_top = 5.0
+offset_right = 23.0
+offset_bottom = 45.0
+grow_horizontal = 0
+scale = Vector2(0.75, 0.75)
+theme = ExtResource("1_2n0y6")
+text = "Back"
+
+[connection signal="pressed" from="Default/VBoxContainer/Resume" to="." method="ResumeButtonPressed"]
+[connection signal="pressed" from="Default/VBoxContainer/Settings" to="." method="ToggleSettingsPanel"]
+[connection signal="pressed" from="Default/VBoxContainer/Quit" to="." method="QuitButtonPressed"]
+[connection signal="item_selected" from="Settings/TabContainer/Player Settings/VBoxContainer/Base Speed/OptionButton" to="Settings/TabContainer/Player Settings" method="SpeedChanged"]
+[connection signal="toggled" from="Settings/TabContainer/Player Settings/VBoxContainer/Run Toggle/RunToggleCheck" to="Settings/TabContainer/Player Settings" method="ToggleRun"]
+[connection signal="value_changed" from="Settings/TabContainer/Graphic Settings/HBoxContainer/VBoxContainer2/Camera FOV/CameraFOVSlider" to="Settings/TabContainer/Graphic Settings" method="SetCameraFOV"]
+[connection signal="value_changed" from="Settings/TabContainer/Graphic Settings/HBoxContainer/VBoxContainer2/Camera Sens/CameraSensSlider" to="Settings/TabContainer/Graphic Settings" method="SetCameraSens"]
+[connection signal="pressed" from="Settings/Back" to="." method="ToggleSettingsPanel"]
