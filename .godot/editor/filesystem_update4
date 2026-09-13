@@ -1,9 +1,0 @@
-res://Scripts/Stats.cs
-res://characters/Alex/scripts/Player.cs
-res://characters/Alex/scripts/Stats.cs
-res://characters/Alex/scripts/CameraArm.cs
-res://UI/pause_menu/GraphicSettings.cs
-res://UI/pause_menu/PlayerSettings.cs
-res://UI/pause_menu/PauseMenu.cs
-res://UI/pause_menu/pause_menu.tscn
-res://UI/Themes/UI_Theme.tres
