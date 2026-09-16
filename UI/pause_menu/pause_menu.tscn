@@ -77,9 +77,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-current_tab = 0
+current_tab = 1
 
 [node name="Player Settings" type="TabBar" parent="Settings/TabContainer" unique_id=1856194781]
+visible = false
 layout_mode = 2
 script = ExtResource("3_mc6od")
 metadata/_tab_index = 0
@@ -105,7 +106,6 @@ size_flags_horizontal = 10
 button_pressed = true
 
 [node name="Graphic Settings" type="TabBar" parent="Settings/TabContainer" unique_id=1863156617 node_paths=PackedStringArray("FOVLabel", "CameraSensLabel")]
-visible = false
 layout_mode = 2
 script = ExtResource("4_kju1d")
 FOVLabel = NodePath("HBoxContainer/VBoxContainer2/Camera FOV/CameraFOVLabel")
@@ -190,21 +190,12 @@ theme_override_constants/separation = 10
 
 [node name="Label" type="Label" parent="Settings/TabContainer/Graphic Settings/HBoxContainer/VBoxContainer3/Camera FOV" unique_id=127993916]
 layout_mode = 2
-text = "Camera FOV"
+text = "FPS Limit"
 
-[node name="CameraFOVSlider" type="HSlider" parent="Settings/TabContainer/Graphic Settings/HBoxContainer/VBoxContainer3/Camera FOV" unique_id=1300037788]
-custom_minimum_size = Vector2(175, 0)
+[node name="FPSLimitText" type="TextEdit" parent="Settings/TabContainer/Graphic Settings/HBoxContainer/VBoxContainer3/Camera FOV" unique_id=87332511]
+custom_minimum_size = Vector2(40, 0)
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 4
-min_value = 50.0
-value = 75.0
-rounded = true
-scrollable = false
-
-[node name="CameraFOVLabel" type="Label" parent="Settings/TabContainer/Graphic Settings/HBoxContainer/VBoxContainer3/Camera FOV" unique_id=1890548350]
-layout_mode = 2
-text = "75"
+text = "9999"
 
 [node name="Cheats" type="TabBar" parent="Settings/TabContainer" unique_id=1880665063]
 visible = false

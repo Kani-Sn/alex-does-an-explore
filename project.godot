@@ -25,6 +25,7 @@ Settings="*uid://bomf650rlhhyk"
 window/size/mode=3
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
+window/vsync/vsync_mode=0
 
 [dotnet]
 

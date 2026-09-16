@@ -7,6 +7,7 @@ public partial class PlayerHud : Control
 	private Label Speed { get; set; }
 	private Label JumpVelocity { get; set; }
 	private Label ExtraBattery { get; set; }
+	private Label FPSCounter { get; set;}
 	private ProgressBar ExtraBatteryLevel { get; set; }
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -15,6 +16,7 @@ public partial class PlayerHud : Control
 		Speed = GetNode<Label>("%Speed");
 		JumpVelocity = GetNode<Label>("%Jump Velocity");
 		ExtraBattery = GetNode<Label>("%Battery Level");
+		FPSCounter = GetNode<Label>("%FPSCounter");
 		ExtraBatteryLevel = GetNode<ProgressBar>("%ExtraBatteryLevel");
 	}
 
@@ -24,6 +26,7 @@ public partial class PlayerHud : Control
 		Speed.Text = String.Format("Speed: {0}", PlayerState.Speed);
 		JumpVelocity.Text = String.Format("Jump Velocity: {0}", PlayerState.JumpVelocity);
 		ExtraBattery.Text = String.Format("Extra Battery: {0}", PlayerState.ExtraBatteryLevel);
+		FPSCounter.Text = Engine.GetFramesPerSecond().ToString();
 		ExtraBatteryLevel.Value = PlayerState.ExtraBatteryLevel;
 	}
 }
