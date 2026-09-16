@@ -3,12 +3,14 @@ using System;
 
 public partial class PlayerSettings : Control
 {
-	private Player PlayerCharacter { get; set; }
+	public PlayerState PlayerState { get; set; }
+	public Settings Settings { get; set; }
 
 	public override void _Ready()
 	{
-		PlayerCharacter = GetOwner<Control>().GetOwner<Player>();
-		GetNode<CheckBox>("%RunToggleCheck").ButtonPressed = PlayerCharacter.IsRunToggle;
+		PlayerState = GetNodeOrNull("/root/PlayerState") as PlayerState;
+		Settings = GetNodeOrNull("/root/Settings") as Settings;
+		GetNode<CheckBox>("%RunToggleCheck").ButtonPressed = Settings.IsRunToggle;
 	}
 
 	private void SpeedChanged(int selected)
@@ -16,23 +18,24 @@ public partial class PlayerSettings : Control
 		switch (selected)
 		{
 			case 0:
-				PlayerCharacter.BaseSpeed = 1.3f;
+				PlayerState.BaseSpeed = 1.3f;
 				break;
 			case 1:
-				PlayerCharacter.BaseSpeed = 2;
+				PlayerState.BaseSpeed = 2;
 				break;
 			case 2:
-				PlayerCharacter.BaseSpeed = 3;
+				PlayerState.BaseSpeed = 3;
 				break;
 			case 3:
-				PlayerCharacter.BaseSpeed = 4;
+				PlayerState.BaseSpeed = 4;
 				break;
 		}
-		PlayerCharacter.Speed = PlayerCharacter.BaseSpeed;
+
+		PlayerState.Speed = PlayerState.BaseSpeed;
 	}
 
-	private void ToggleRun(bool isToggle)
+	private void IsToggleRun(bool isToggle)
 	{
-		PlayerCharacter.IsRunToggle = isToggle;
+		Settings.IsRunToggle = isToggle;
 	}
 }

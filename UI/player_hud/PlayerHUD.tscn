@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://83v5g3e0v1v1"]
+
+[ext_resource type="Theme" uid="uid://dt3q06uplryn8" path="res://UI/themes/UI_Theme.tres" id="1_2i4uh"]
+[ext_resource type="Script" uid="uid://xkor3thg6ngx" path="res://UI/player_hud/PlayerHud.cs" id="2_3u33u"]
+
+[node name="PlayerHud" type="Control" unique_id=573294090]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_2i4uh")
+script = ExtResource("2_3u33u")
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=554462825]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 119.0
+offset_bottom = 50.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer" unique_id=1890895709]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer" unique_id=337057129]
+layout_mode = 2
+text = "Player State"
+
+[node name="Speed" type="Label" parent="PanelContainer/VBoxContainer" unique_id=949898338]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Speed: "
+
+[node name="Jump Velocity" type="Label" parent="PanelContainer/VBoxContainer" unique_id=366209423]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Jump Velocity: "

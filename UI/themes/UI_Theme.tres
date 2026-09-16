@@ -1026,10 +1026,17 @@ border_color = Color(0.40069768, 0.40069777, 0.40069747, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ycdc0"]
 bg_color = Color(0, 0, 0, 0.627451)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ax8m1"]
-bg_color = Color(0.5, 0.5, 0.5, 1)
-draw_center = false
-border_color = Color(0.35, 0.35, 0.35, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bkubt"]
+content_margin_left = 8.0
+content_margin_top = 8.0
+content_margin_right = 8.0
+content_margin_bottom = 8.0
+bg_color = Color(0.1, 0.1, 0.1, 0.6)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pucjv"]
 content_margin_left = 10.0
@@ -1116,7 +1123,7 @@ OptionButton/styles/hover = SubResource("StyleBoxFlat_ycvnl")
 OptionButton/styles/normal = SubResource("StyleBoxFlat_8pe3s")
 OptionButton/styles/pressed = SubResource("StyleBoxFlat_iav7n")
 Panel/styles/panel = SubResource("StyleBoxFlat_ycdc0")
-PanelContainer/styles/panel = SubResource("StyleBoxFlat_ax8m1")
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_bkubt")
 TabContainer/constants/tab_separation = 1
 TabContainer/styles/panel = SubResource("StyleBoxFlat_pucjv")
 TabContainer/styles/tab_hovered = SubResource("StyleBoxFlat_ednr0")

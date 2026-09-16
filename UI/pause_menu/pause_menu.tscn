@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://ccpjytgvt1ynv"]
 
-[ext_resource type="Theme" uid="uid://dt3q06uplryn8" path="res://UI/Themes/UI_Theme.tres" id="1_2n0y6"]
+[ext_resource type="Theme" uid="uid://dt3q06uplryn8" path="res://UI/themes/UI_Theme.tres" id="1_2n0y6"]
 [ext_resource type="Script" uid="uid://crjk0sctq7h7c" path="res://UI/pause_menu/PauseMenu.cs" id="2_mc6od"]
 [ext_resource type="Script" uid="uid://cpi0fyeuqimmf" path="res://UI/pause_menu/PlayerSettings.cs" id="3_mc6od"]
 [ext_resource type="Script" uid="uid://inb0xaegk2k5" path="res://UI/pause_menu/GraphicSettings.cs" id="4_kju1d"]
@@ -77,10 +77,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-current_tab = 1
+current_tab = 0
 
 [node name="Player Settings" type="TabBar" parent="Settings/TabContainer" unique_id=1856194781]
-visible = false
 layout_mode = 2
 script = ExtResource("3_mc6od")
 metadata/_tab_index = 0
@@ -89,30 +88,6 @@ metadata/_tab_index = 0
 layout_mode = 0
 offset_right = 250.0
 offset_bottom = 64.0
-
-[node name="Base Speed" type="HBoxContainer" parent="Settings/TabContainer/Player Settings/VBoxContainer" unique_id=859283310]
-custom_minimum_size = Vector2(0, 30)
-layout_mode = 2
-theme_override_constants/separation = 10
-
-[node name="Label" type="Label" parent="Settings/TabContainer/Player Settings/VBoxContainer/Base Speed" unique_id=268826832]
-layout_mode = 2
-text = "Base Speed"
-
-[node name="OptionButton" type="OptionButton" parent="Settings/TabContainer/Player Settings/VBoxContainer/Base Speed" unique_id=608793375]
-layout_mode = 2
-size_flags_horizontal = 10
-theme = ExtResource("1_2n0y6")
-selected = 0
-item_count = 4
-popup/item_0/text = "1.3"
-popup/item_0/id = 0
-popup/item_1/text = "2"
-popup/item_1/id = 1
-popup/item_2/text = "3"
-popup/item_2/id = 2
-popup/item_3/text = "4"
-popup/item_3/id = 3
 
 [node name="Run Toggle" type="HBoxContainer" parent="Settings/TabContainer/Player Settings/VBoxContainer" unique_id=1185420390]
 custom_minimum_size = Vector2(0, 30)
@@ -130,6 +105,7 @@ size_flags_horizontal = 10
 button_pressed = true
 
 [node name="Graphic Settings" type="TabBar" parent="Settings/TabContainer" unique_id=1863156617 node_paths=PackedStringArray("FOVLabel", "CameraSensLabel")]
+visible = false
 layout_mode = 2
 script = ExtResource("4_kju1d")
 FOVLabel = NodePath("HBoxContainer/VBoxContainer2/Camera FOV/CameraFOVLabel")
@@ -260,8 +236,7 @@ text = "Back"
 [connection signal="pressed" from="Default/VBoxContainer/Resume" to="." method="ResumeButtonPressed"]
 [connection signal="pressed" from="Default/VBoxContainer/Settings" to="." method="ToggleSettingsPanel"]
 [connection signal="pressed" from="Default/VBoxContainer/Quit" to="." method="QuitButtonPressed"]
-[connection signal="item_selected" from="Settings/TabContainer/Player Settings/VBoxContainer/Base Speed/OptionButton" to="Settings/TabContainer/Player Settings" method="SpeedChanged"]
-[connection signal="toggled" from="Settings/TabContainer/Player Settings/VBoxContainer/Run Toggle/RunToggleCheck" to="Settings/TabContainer/Player Settings" method="ToggleRun"]
+[connection signal="toggled" from="Settings/TabContainer/Player Settings/VBoxContainer/Run Toggle/RunToggleCheck" to="Settings/TabContainer/Player Settings" method="IsToggleRun"]
 [connection signal="value_changed" from="Settings/TabContainer/Graphic Settings/HBoxContainer/VBoxContainer2/Camera FOV/CameraFOVSlider" to="Settings/TabContainer/Graphic Settings" method="SetCameraFOV"]
 [connection signal="value_changed" from="Settings/TabContainer/Graphic Settings/HBoxContainer/VBoxContainer2/Camera Sens/CameraSensSlider" to="Settings/TabContainer/Graphic Settings" method="SetCameraSens"]
 [connection signal="pressed" from="Settings/Back" to="." method="ToggleSettingsPanel"]

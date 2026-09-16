@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://38i48bjwscfs" path="res://characters/Alex/scripts/Player.cs" id="1_l4ad2"]
 [ext_resource type="PackedScene" uid="uid://ccpjytgvt1ynv" path="res://UI/pause_menu/pause_menu.tscn" id="2_f22ya"]
 [ext_resource type="Script" uid="uid://cgy7jqq5o4e0l" path="res://characters/Alex/scripts/CameraArm.cs" id="2_vb2g1"]
+[ext_resource type="PackedScene" uid="uid://83v5g3e0v1v1" path="res://UI/player_hud/PlayerHUD.tscn" id="4_yvbkt"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_pucjv"]
 radius = 0.4
@@ -42,6 +43,9 @@ script = ExtResource("2_vb2g1")
 unique_name_in_owner = true
 h_offset = 0.5
 current = true
+
+[node name="PlayerHud" parent="." unique_id=573294090 instance=ExtResource("4_yvbkt")]
+mouse_filter = 2
 
 [node name="Pausemenu" parent="." unique_id=494135152 instance=ExtResource("2_f22ya")]
 visible = false

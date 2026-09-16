@@ -1,15 +1,9 @@
 using Godot;
-using System;
 
 public partial class Player : CharacterBody3D
 {
-	// Editable during runtime
-	[Export(PropertyHint.Range, "1.0, 5.0")] public float BaseSpeed { get; set; } = 1.3f;
-	[Export(PropertyHint.Range, "4.0, 10.0")] public float JumpVelocity { get; set; } = 5;
-	[Export(PropertyHint.Range, "5, 20")] public float MeshRotationSpeed { get; set; } = 10;
-	public float Speed { get; set; }
-	[Export] public bool IsRunToggle = true;
-	private bool IsRunning = false;
+	public PlayerState PlayerState { get; set; }
+	public Settings Settings { get; set; }
 
 	// Nodes
 	private Control PauseMenu;
@@ -18,8 +12,8 @@ public partial class Player : CharacterBody3D
 
 	public override void _Ready()
 	{
+		PlayerState = GetNodeOrNull("/root/PlayerState") as PlayerState;
 		Input.MouseMode = Input.MouseModeEnum.Captured;
-		Speed = BaseSpeed;
 		PauseMenu = GetNode<Control>("Pausemenu");
 		CameraArm = GetNode<CameraArm>("CameraArm");
 		Mesh = GetNode<MeshInstance3D>("Mesh");
@@ -59,14 +53,14 @@ public partial class Player : CharacterBody3D
 
 		if (Input.IsActionJustPressed("jump") && IsOnFloor())
 		{
-			velocity.Y = JumpVelocity;
+			velocity.Y = PlayerState.JumpVelocity;
 		}
 
 		Vector2 inputDir = Input.GetVector("left", "right", "forward", "backward");
 		Vector3 direction = (Transform.Basis * new Vector3(inputDir.X, 0, inputDir.Y)).Rotated(Vector3.Up, CameraArm.Rotation.Y).Normalized();
 
-		velocity.X = direction == Vector3.Zero ? Mathf.MoveToward(Velocity.X, 0, Speed) : direction.X * Speed;
-		velocity.Z = direction == Vector3.Zero ? Mathf.MoveToward(Velocity.Z, 0, Speed) : direction.Z * Speed;
+		velocity.X = direction == Vector3.Zero ? Mathf.MoveToward(Velocity.X, 0, PlayerState.Speed) : direction.X * PlayerState.Speed;
+		velocity.Z = direction == Vector3.Zero ? Mathf.MoveToward(Velocity.Z, 0, PlayerState.Speed) : direction.Z * PlayerState.Speed;
 
 		Velocity = velocity;
 		MoveAndSlide();
@@ -78,17 +72,17 @@ public partial class Player : CharacterBody3D
 		Vector3 newRotation = Mesh.Rotation;
 		if (velocity != Vector3.Zero)
 		{
-			newRotation.Y = Mathf.LerpAngle(Mesh.Rotation.Y, CameraArm.Rotation.Y, delta * MeshRotationSpeed);
+			newRotation.Y = Mathf.LerpAngle(Mesh.Rotation.Y, CameraArm.Rotation.Y, delta * PlayerState.MeshRotationSpeed);
 			Mesh.Rotation = newRotation;
 		}
 	}
 
 	private void SetRunSpeed()
 	{
-		if (Input.IsActionJustPressed("run") || Input.IsActionJustReleased("run") && IsRunning && !IsRunToggle)
+		if (Input.IsActionJustPressed("run") || Input.IsActionJustReleased("run") && PlayerState.IsRunning && !Settings.IsRunToggle)
 		{
-			IsRunning = !IsRunning;
-			Speed = BaseSpeed * (IsRunning ? 5 : 1);
+			PlayerState.IsRunning = !PlayerState.IsRunning;
+			PlayerState.Speed = PlayerState.BaseSpeed * (PlayerState.IsRunning ? 5 : 1);
 		}
 	}
 }

@@ -15,6 +15,11 @@ run/main_scene="uid://do5qhgsx276th"
 config/features=PackedStringArray("4.7", "C#", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+PlayerState="*uid://bxnam3dqrtwg1"
+Settings="*uid://bomf650rlhhyk"
+
 [display]
 
 window/size/mode=3
