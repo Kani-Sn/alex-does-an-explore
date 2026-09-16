@@ -13,6 +13,7 @@ public partial class Player : CharacterBody3D
 	public override void _Ready()
 	{
 		PlayerState = GetNodeOrNull("/root/PlayerState") as PlayerState;
+		Settings = GetNodeOrNull("/root/Settings") as Settings;
 		Input.MouseMode = Input.MouseModeEnum.Captured;
 		PauseMenu = GetNode<Control>("Pausemenu");
 		CameraArm = GetNode<CameraArm>("CameraArm");
@@ -79,10 +80,17 @@ public partial class Player : CharacterBody3D
 
 	private void SetRunSpeed()
 	{
+		float runSpeed = PlayerState.CanRun ? 3 : 1;
+
+		if (!PlayerState.IsRunning && !PlayerState.CanRun)
+		{
+			return;
+		}
+
 		if (Input.IsActionJustPressed("run") || Input.IsActionJustReleased("run") && PlayerState.IsRunning && !Settings.IsRunToggle)
 		{
 			PlayerState.IsRunning = !PlayerState.IsRunning;
-			PlayerState.Speed = PlayerState.BaseSpeed * (PlayerState.IsRunning ? 5 : 1);
+			PlayerState.Speed = PlayerState.BaseSpeed * (PlayerState.IsRunning ? runSpeed : 1);
 		}
 	}
 }

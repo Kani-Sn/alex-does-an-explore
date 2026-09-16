@@ -3,6 +3,30 @@
 [ext_resource type="Theme" uid="uid://dt3q06uplryn8" path="res://UI/themes/UI_Theme.tres" id="1_2i4uh"]
 [ext_resource type="Script" uid="uid://xkor3thg6ngx" path="res://UI/player_hud/PlayerHud.cs" id="2_3u33u"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2i4uh"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+bg_color = Color(0.1, 0.1, 0.1, 0.19607843)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+corner_detail = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3u33u"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+bg_color = Color(1, 1, 1, 0.8627451)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+corner_detail = 6
+
 [node name="PlayerHud" type="Control" unique_id=573294090]
 layout_mode = 3
 anchors_preset = 15
@@ -23,7 +47,7 @@ offset_bottom = 50.0
 [node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer" unique_id=1890895709]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="PanelContainer/VBoxContainer" unique_id=337057129]
+[node name="Title" type="Label" parent="PanelContainer/VBoxContainer" unique_id=337057129]
 layout_mode = 2
 text = "Player State"
 
@@ -36,3 +60,22 @@ text = "Speed: "
 unique_name_in_owner = true
 layout_mode = 2
 text = "Jump Velocity: "
+
+[node name="ExtraBatteryLevel" type="ProgressBar" parent="." unique_id=1859783282]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -100.0
+offset_top = -48.0
+offset_right = 99.99927
+offset_bottom = -38.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/background = SubResource("StyleBoxFlat_2i4uh")
+theme_override_styles/fill = SubResource("StyleBoxFlat_3u33u")
+value = 50.0
+show_percentage = false
