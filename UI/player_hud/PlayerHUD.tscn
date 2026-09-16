@@ -61,6 +61,11 @@ unique_name_in_owner = true
 layout_mode = 2
 text = "Jump Velocity: "
 
+[node name="Battery Level" type="Label" parent="PanelContainer/VBoxContainer" unique_id=1230757057]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Battery Level: "
+
 [node name="ExtraBatteryLevel" type="ProgressBar" parent="." unique_id=1859783282]
 unique_name_in_owner = true
 layout_mode = 1

@@ -44,26 +44,26 @@ public partial class Player : CharacterBody3D
 
 	private void UpdateMovement(double delta)
 	{
-		Vector3 velocity = Velocity;
+		PlayerState.velocity = Velocity;
 
 		// Add the gravity
 		if (!IsOnFloor())
 		{
-			velocity += GetGravity() * (float)delta;
+			PlayerState.velocity += GetGravity() * (float)delta;
 		}
 
 		if (Input.IsActionJustPressed("jump") && IsOnFloor())
 		{
-			velocity.Y = PlayerState.JumpVelocity;
+			PlayerState.velocity.Y = PlayerState.JumpVelocity;
 		}
 
 		Vector2 inputDir = Input.GetVector("left", "right", "forward", "backward");
 		Vector3 direction = (Transform.Basis * new Vector3(inputDir.X, 0, inputDir.Y)).Rotated(Vector3.Up, CameraArm.Rotation.Y).Normalized();
 
-		velocity.X = direction == Vector3.Zero ? Mathf.MoveToward(Velocity.X, 0, PlayerState.Speed) : direction.X * PlayerState.Speed;
-		velocity.Z = direction == Vector3.Zero ? Mathf.MoveToward(Velocity.Z, 0, PlayerState.Speed) : direction.Z * PlayerState.Speed;
+		PlayerState.velocity.X = direction == Vector3.Zero ? Mathf.MoveToward(Velocity.X, 0, PlayerState.Speed) : direction.X * PlayerState.Speed;
+		PlayerState.velocity.Z = direction == Vector3.Zero ? Mathf.MoveToward(Velocity.Z, 0, PlayerState.Speed) : direction.Z * PlayerState.Speed;
 
-		Velocity = velocity;
+		Velocity = PlayerState.velocity;
 		MoveAndSlide();
 	}
 
