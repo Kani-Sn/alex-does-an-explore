@@ -9,7 +9,6 @@ public partial class GraphicSettings : TabBar
 
 	private Player PlayerCharacter;
 	private Camera3D PlayerCamera;
-	private SpringArm3D PlayerCameraArm;
 
 	private Settings Settings { get; set; }
 
@@ -19,26 +18,16 @@ public partial class GraphicSettings : TabBar
 		Settings = GetNodeOrNull("/root/Settings") as Settings;
 		PlayerCharacter = GetOwner().GetOwner<Player>();
 		PlayerCamera = PlayerCharacter.GetNode<Camera3D>("%Camera");
-		PlayerCameraArm = PlayerCharacter.GetNode<SpringArm3D>("%CameraArm");
 
 		FOVLabel.Text = PlayerCamera.Fov.ToString();
 		FPSLimit.Text = Engine.MaxFps.ToString();
-	}
-
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(double delta)
-	{
+		CameraSensLabel.Text = Settings.CameraSensitivity.ToString();
 	}
 
 	private void SetCameraFOV(int value)
 	{
 		FOVLabel.Text = value.ToString();
 		PlayerCamera.Fov = value;
-	}
-
-	private void SetCameraSens(float value)
-	{
-		CameraSensLabel.Text = (value * 10).ToString("0.0");
 	}
 
 	private void SetFPSLimit()

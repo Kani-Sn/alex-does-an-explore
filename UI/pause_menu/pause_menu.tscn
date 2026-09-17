@@ -77,10 +77,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-current_tab = 1
+current_tab = 0
 
 [node name="Player Settings" type="TabBar" parent="Settings/TabContainer" unique_id=1856194781]
-visible = false
 layout_mode = 2
 script = ExtResource("3_mc6od")
 metadata/_tab_index = 0
@@ -89,6 +88,33 @@ metadata/_tab_index = 0
 layout_mode = 0
 offset_right = 250.0
 offset_bottom = 64.0
+
+[node name="Camera Sens" type="HBoxContainer" parent="Settings/TabContainer/Player Settings/VBoxContainer" unique_id=2072188997]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Label" type="Label" parent="Settings/TabContainer/Player Settings/VBoxContainer/Camera Sens" unique_id=1042169077]
+layout_mode = 2
+text = "Camera Sens"
+
+[node name="CameraSensSlider" type="HSlider" parent="Settings/TabContainer/Player Settings/VBoxContainer/Camera Sens" unique_id=875441770]
+custom_minimum_size = Vector2(175, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+min_value = 0.01
+max_value = 1.0
+step = 0.01
+value = 0.09999999999999999
+scrollable = false
+
+[node name="CameraSensLabel" type="Label" parent="Settings/TabContainer/Player Settings/VBoxContainer/Camera Sens" unique_id=1774661904]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+text = "0.01"
+horizontal_alignment = 2
 
 [node name="Run Toggle" type="HBoxContainer" parent="Settings/TabContainer/Player Settings/VBoxContainer" unique_id=1185420390]
 custom_minimum_size = Vector2(0, 30)
@@ -106,10 +132,11 @@ size_flags_horizontal = 10
 button_pressed = true
 
 [node name="Graphic Settings" type="TabBar" parent="Settings/TabContainer" unique_id=1863156617 node_paths=PackedStringArray("FOVLabel", "CameraSensLabel", "FPSLimit")]
+visible = false
 layout_mode = 2
 script = ExtResource("4_kju1d")
 FOVLabel = NodePath("HBoxContainer/VBoxContainer2/Camera FOV/CameraFOVLabel")
-CameraSensLabel = NodePath("HBoxContainer/VBoxContainer2/Camera Sens/CameraSensLabel")
+CameraSensLabel = NodePath("")
 FPSLimit = NodePath("HBoxContainer/VBoxContainer3/Camera FOV/FPSLimitText")
 metadata/_tab_index = 1
 
@@ -149,33 +176,6 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(40, 0)
 layout_mode = 2
 text = "100"
-horizontal_alignment = 2
-
-[node name="Camera Sens" type="HBoxContainer" parent="Settings/TabContainer/Graphic Settings/HBoxContainer/VBoxContainer2" unique_id=1712076003]
-custom_minimum_size = Vector2(0, 30)
-layout_mode = 2
-theme_override_constants/separation = 10
-
-[node name="Label" type="Label" parent="Settings/TabContainer/Graphic Settings/HBoxContainer/VBoxContainer2/Camera Sens" unique_id=657638524]
-layout_mode = 2
-text = "Camera Sens"
-
-[node name="CameraSensSlider" type="HSlider" parent="Settings/TabContainer/Graphic Settings/HBoxContainer/VBoxContainer2/Camera Sens" unique_id=982649136]
-custom_minimum_size = Vector2(175, 0)
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 4
-min_value = 0.01
-max_value = 1.0
-step = 0.01
-value = 0.09999999999999999
-scrollable = false
-
-[node name="CameraSensLabel" type="Label" parent="Settings/TabContainer/Graphic Settings/HBoxContainer/VBoxContainer2/Camera Sens" unique_id=1467738692]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(30, 0)
-layout_mode = 2
-text = "0.01"
 horizontal_alignment = 2
 
 [node name="VSeparator" type="VSeparator" parent="Settings/TabContainer/Graphic Settings/HBoxContainer" unique_id=1760919869]
@@ -229,8 +229,8 @@ text = "Back"
 [connection signal="pressed" from="Default/VBoxContainer/Resume" to="." method="ResumeButtonPressed"]
 [connection signal="pressed" from="Default/VBoxContainer/Settings" to="." method="ToggleSettingsPanel"]
 [connection signal="pressed" from="Default/VBoxContainer/Quit" to="." method="QuitButtonPressed"]
+[connection signal="value_changed" from="Settings/TabContainer/Player Settings/VBoxContainer/Camera Sens/CameraSensSlider" to="Settings/TabContainer/Player Settings" method="SetCameraSens"]
 [connection signal="toggled" from="Settings/TabContainer/Player Settings/VBoxContainer/Run Toggle/RunToggleCheck" to="Settings/TabContainer/Player Settings" method="IsToggleRun"]
 [connection signal="value_changed" from="Settings/TabContainer/Graphic Settings/HBoxContainer/VBoxContainer2/Camera FOV/CameraFOVSlider" to="Settings/TabContainer/Graphic Settings" method="SetCameraFOV"]
-[connection signal="value_changed" from="Settings/TabContainer/Graphic Settings/HBoxContainer/VBoxContainer2/Camera Sens/CameraSensSlider" to="Settings/TabContainer/Graphic Settings" method="SetCameraSens"]
 [connection signal="text_changed" from="Settings/TabContainer/Graphic Settings/HBoxContainer/VBoxContainer3/Camera FOV/FPSLimitText" to="Settings/TabContainer/Graphic Settings" method="SetFPSLimit"]
 [connection signal="pressed" from="Settings/Back" to="." method="ToggleSettingsPanel"]

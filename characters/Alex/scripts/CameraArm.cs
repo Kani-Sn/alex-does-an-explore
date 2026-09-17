@@ -3,18 +3,19 @@ using System;
 
 public partial class CameraArm : SpringArm3D
 {
+	private Settings Settings;
 	private const int MinLength = 2;
 	private const int MaxLength = 10;
 
 	private Vector2 _mouse_position = new(0.0f, 0.0f);
 	private float _total_pitch = 0.0f;
-	[Export(PropertyHint.Range, "0.01, 1")] public float Sensitivity = 0.1f;
 
 	public static float ZoomSpeed { get; set; } = 0.5f;
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
+		Settings = GetNodeOrNull("/root/Settings") as Settings;
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -36,7 +37,7 @@ public partial class CameraArm : SpringArm3D
 	{
 		if (Input.MouseMode == Input.MouseModeEnum.Captured)
 		{
-			_mouse_position *= Sensitivity;
+			_mouse_position *= Settings.CameraSensitivity;
 			float yaw = _mouse_position.X;
 			float pitch = _mouse_position.Y;
 			_mouse_position = Vector2.Zero;
