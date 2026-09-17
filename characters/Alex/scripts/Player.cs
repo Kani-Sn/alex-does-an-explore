@@ -2,8 +2,8 @@ using Godot;
 
 public partial class Player : CharacterBody3D
 {
-	public PlayerState PlayerState { get; set; }
-	public Settings Settings { get; set; }
+	public PlayerState PlayerState;
+	public Settings Settings;
 
 	// Nodes
 	private Control PauseMenu;

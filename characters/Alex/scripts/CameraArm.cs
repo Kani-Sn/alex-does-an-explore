@@ -10,7 +10,7 @@ public partial class CameraArm : SpringArm3D
 	private Vector2 _mouse_position = new(0.0f, 0.0f);
 	private float _total_pitch = 0.0f;
 
-	public static float ZoomSpeed { get; set; } = 0.5f;
+	public static float ZoomSpeed = 0.5f;
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()

@@ -10,7 +10,7 @@ public partial class GraphicSettings : TabBar
 	private Player PlayerCharacter;
 	private Camera3D PlayerCamera;
 
-	private Settings Settings { get; set; }
+	private Settings Settings;
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()

@@ -4,15 +4,15 @@ using Godot;
 public partial class PlayerState : Node
 {
 
-	public float BaseSpeed { get; set; } = 1.3f;
-	public float JumpVelocity { get; set; } = 5.5f;
-	public float MeshRotationSpeed { get; set; } = 15;
-	public float Speed { get; set; }
-	public float ExtraBatteryLevel { get; set; } = 100;
+	public float BaseSpeed = 1.3f;
+	public float JumpVelocity = 5.5f;
+	public float MeshRotationSpeed = 15;
+	public float Speed;
+	public float ExtraBatteryLevel = 100;
 	public Vector3 velocity;
 
-	public bool IsRunning { get; set; } = false;
-	public bool CanRun { get; set; } = true;
+	public bool IsRunning = false;
+	public bool CanRun = true;
 
 	public override void _Ready()
 	{

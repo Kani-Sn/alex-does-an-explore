@@ -3,10 +3,9 @@ using System;
 
 public partial class PauseMenu : Control
 {
-	private Settings Settings { get; set; }
-
-	private Panel DefaultPanel { get; set; }
-	private Panel SettingsPanel { get; set; }
+	private Settings Settings;
+	private Panel DefaultPanel;
+	private Panel SettingsPanel;
 
 	public override void _Ready()
 	{

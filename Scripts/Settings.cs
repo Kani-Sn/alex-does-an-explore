@@ -2,9 +2,9 @@ using Godot;
 
 public partial class Settings : Node
 {
-	public bool IsRunToggle { get; set; } = true;
-	public int CurrentFPSLimit { get; set; }
-	public float CameraSensitivity { get; set; } = 0.1f;
+	public bool IsRunToggle = true;
+	public int CurrentFPSLimit;
+	public float CameraSensitivity = 0.1f;
 
 	public void SetFPSLimit(int maxFPS)
 	{

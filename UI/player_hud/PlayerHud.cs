@@ -3,12 +3,12 @@ using System;
 
 public partial class PlayerHud : Control
 {
-	private PlayerState PlayerState { get; set; }
-	private Label Speed { get; set; }
-	private Label JumpVelocity { get; set; }
-	private Label ExtraBattery { get; set; }
-	private Label FPSCounter { get; set;}
-	private ProgressBar ExtraBatteryLevel { get; set; }
+	private PlayerState PlayerState;
+	private Label Speed;
+	private Label JumpVelocity;
+	private Label ExtraBattery;
+	private Label FPSCounter;
+	private ProgressBar ExtraBatteryLevel;
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{

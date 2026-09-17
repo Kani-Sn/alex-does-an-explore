@@ -3,8 +3,8 @@ using System;
 
 public partial class PlayerSettings : Control
 {
-	public PlayerState PlayerState { get; set; }
-	public Settings Settings { get; set; }
+	public PlayerState PlayerState;
+	public Settings Settings;
 	private Label CameraSensLabel;
 
 	public override void _Ready()
