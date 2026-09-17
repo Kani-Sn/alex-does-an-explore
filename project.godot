@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 PlayerState="*uid://bxnam3dqrtwg1"
 Settings="*uid://bomf650rlhhyk"
+Cheats="*uid://bc652d3hejr0h"
 
 [display]
 

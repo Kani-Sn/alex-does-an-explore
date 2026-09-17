@@ -3,7 +3,7 @@ using Godot;
 
 public partial class PlayerState : Node
 {
-
+	private Cheats Cheats;
 	public float BaseSpeed = 1.3f;
 	public float JumpVelocity = 5.5f;
 	public float MeshRotationSpeed = 15;
@@ -16,6 +16,7 @@ public partial class PlayerState : Node
 
 	public override void _Ready()
 	{
+		Cheats = GetNodeOrNull("/root/Cheats") as Cheats;
 		Speed = BaseSpeed;
 	}
 
@@ -26,11 +27,13 @@ public partial class PlayerState : Node
 
 	private void AdjustExtraBatteryLevel(float delta)
 	{
-		if (IsRunning && ExtraBatteryLevel > 0 && velocity != Vector3.Zero)
+		if (IsRunning && ExtraBatteryLevel > 0 && velocity != Vector3.Zero && !Cheats.UnlimitedBattery)
 		{
 			ExtraBatteryLevel -= 0.5f;
 		}
-		else if (!IsRunning && ExtraBatteryLevel < 100 || velocity == Vector3.Zero && ExtraBatteryLevel < 100)
+		else if (!IsRunning && ExtraBatteryLevel < 100 ||
+		 velocity == Vector3.Zero && ExtraBatteryLevel < 100 ||
+		 IsRunning && Cheats.UnlimitedBattery)
 		{
 			ExtraBatteryLevel += 0.2f;
 		}

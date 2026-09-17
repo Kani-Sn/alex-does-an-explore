@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://crjk0sctq7h7c" path="res://UI/pause_menu/PauseMenu.cs" id="2_mc6od"]
 [ext_resource type="Script" uid="uid://cpi0fyeuqimmf" path="res://UI/pause_menu/PlayerSettings.cs" id="3_mc6od"]
 [ext_resource type="Script" uid="uid://inb0xaegk2k5" path="res://UI/pause_menu/GraphicSettings.cs" id="4_kju1d"]
+[ext_resource type="Script" uid="uid://c8sp6n5eosgkd" path="res://UI/pause_menu/CheatSettings.cs" id="5_0q86m"]
 
 [node name="Pausemenu" type="Control" unique_id=494135152]
 process_mode = 2
@@ -77,9 +78,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-current_tab = 0
+current_tab = 2
 
 [node name="Player Settings" type="TabBar" parent="Settings/TabContainer" unique_id=1856194781]
+visible = false
 layout_mode = 2
 script = ExtResource("3_mc6od")
 metadata/_tab_index = 0
@@ -131,12 +133,11 @@ layout_mode = 2
 size_flags_horizontal = 10
 button_pressed = true
 
-[node name="Graphic Settings" type="TabBar" parent="Settings/TabContainer" unique_id=1863156617 node_paths=PackedStringArray("FOVLabel", "CameraSensLabel", "FPSLimit")]
+[node name="Graphic Settings" type="TabBar" parent="Settings/TabContainer" unique_id=1863156617 node_paths=PackedStringArray("FOVLabel", "FPSLimit")]
 visible = false
 layout_mode = 2
 script = ExtResource("4_kju1d")
 FOVLabel = NodePath("HBoxContainer/VBoxContainer2/Camera FOV/CameraFOVLabel")
-CameraSensLabel = NodePath("")
 FPSLimit = NodePath("HBoxContainer/VBoxContainer3/Camera FOV/FPSLimitText")
 metadata/_tab_index = 1
 
@@ -200,16 +201,33 @@ layout_mode = 2
 text = "9999"
 
 [node name="Cheats" type="TabBar" parent="Settings/TabContainer" unique_id=1880665063]
-visible = false
 layout_mode = 2
+script = ExtResource("5_0q86m")
 metadata/_tab_index = 2
 
-[node name="Label" type="Label" parent="Settings/TabContainer/Cheats" unique_id=1160450018]
-layout_mode = 0
-offset_right = 222.0
-offset_bottom = 23.0
-text = "Placeholder Cheat Settings
-Cheats are fun or assistive things for the player."
+[node name="HBoxContainer" type="HBoxContainer" parent="Settings/TabContainer/Cheats" unique_id=563423207]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+
+[node name="Cheats1" type="VBoxContainer" parent="Settings/TabContainer/Cheats/HBoxContainer" unique_id=1263550444]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Settings/TabContainer/Cheats/HBoxContainer/Cheats1" unique_id=2016612176]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Settings/TabContainer/Cheats/HBoxContainer/Cheats1/HBoxContainer" unique_id=1248233408]
+layout_mode = 2
+text = "Unlimited Battery"
+
+[node name="UnlimitedBattery" type="CheckButton" parent="Settings/TabContainer/Cheats/HBoxContainer/Cheats1/HBoxContainer" unique_id=1748112747]
+unique_name_in_owner = true
+layout_mode = 2
+flat = true
 
 [node name="Back" type="Button" parent="Settings" unique_id=1555983927]
 custom_minimum_size = Vector2(150, 40)
@@ -233,4 +251,5 @@ text = "Back"
 [connection signal="toggled" from="Settings/TabContainer/Player Settings/VBoxContainer/Run Toggle/RunToggleCheck" to="Settings/TabContainer/Player Settings" method="IsToggleRun"]
 [connection signal="value_changed" from="Settings/TabContainer/Graphic Settings/HBoxContainer/VBoxContainer2/Camera FOV/CameraFOVSlider" to="Settings/TabContainer/Graphic Settings" method="SetCameraFOV"]
 [connection signal="text_changed" from="Settings/TabContainer/Graphic Settings/HBoxContainer/VBoxContainer3/Camera FOV/FPSLimitText" to="Settings/TabContainer/Graphic Settings" method="SetFPSLimit"]
+[connection signal="toggled" from="Settings/TabContainer/Cheats/HBoxContainer/Cheats1/HBoxContainer/UnlimitedBattery" to="Settings/TabContainer/Cheats" method="SetUnlimitedBattery"]
 [connection signal="pressed" from="Settings/Back" to="." method="ToggleSettingsPanel"]
