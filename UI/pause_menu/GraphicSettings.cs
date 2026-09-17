@@ -21,7 +21,6 @@ public partial class GraphicSettings : TabBar
 
 		FOVLabel.Text = PlayerCamera.Fov.ToString();
 		FPSLimit.Text = Engine.MaxFps.ToString();
-		CameraSensLabel.Text = Settings.CameraSensitivity.ToString();
 	}
 
 	private void SetCameraFOV(int value)
