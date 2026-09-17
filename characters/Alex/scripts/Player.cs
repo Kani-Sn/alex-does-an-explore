@@ -23,11 +23,11 @@ public partial class Player : CharacterBody3D
 	public override void _PhysicsProcess(double delta)
 	{
 		UpdateMovement(delta);
+		RotateMesh((float)delta);
 	}
 
 	public override void _Process(double delta)
 	{
-		RotateMesh((float)delta);
 		SetRunSpeed();
 	}
 
@@ -37,6 +37,7 @@ public partial class Player : CharacterBody3D
 		if (Input.IsActionJustPressed("pause_menu"))
 		{
 			Input.MouseMode = Input.MouseModeEnum.Visible;
+			Settings.SetFPSLimit(60); // SET FPS LIMIT WHEN GAME IS PAUSED
 			PauseMenu.Visible = true;
 			GetTree().Paused = true;
 		}

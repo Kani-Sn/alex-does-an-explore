@@ -105,11 +105,12 @@ layout_mode = 2
 size_flags_horizontal = 10
 button_pressed = true
 
-[node name="Graphic Settings" type="TabBar" parent="Settings/TabContainer" unique_id=1863156617 node_paths=PackedStringArray("FOVLabel", "CameraSensLabel")]
+[node name="Graphic Settings" type="TabBar" parent="Settings/TabContainer" unique_id=1863156617 node_paths=PackedStringArray("FOVLabel", "CameraSensLabel", "FPSLimit")]
 layout_mode = 2
 script = ExtResource("4_kju1d")
 FOVLabel = NodePath("HBoxContainer/VBoxContainer2/Camera FOV/CameraFOVLabel")
 CameraSensLabel = NodePath("HBoxContainer/VBoxContainer2/Camera Sens/CameraSensLabel")
+FPSLimit = NodePath("HBoxContainer/VBoxContainer3/Camera FOV/FPSLimitText")
 metadata/_tab_index = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Settings/TabContainer/Graphic Settings" unique_id=1625898256]
@@ -193,6 +194,7 @@ layout_mode = 2
 text = "FPS Limit"
 
 [node name="FPSLimitText" type="TextEdit" parent="Settings/TabContainer/Graphic Settings/HBoxContainer/VBoxContainer3/Camera FOV" unique_id=87332511]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(40, 0)
 layout_mode = 2
 text = "9999"
@@ -230,4 +232,5 @@ text = "Back"
 [connection signal="toggled" from="Settings/TabContainer/Player Settings/VBoxContainer/Run Toggle/RunToggleCheck" to="Settings/TabContainer/Player Settings" method="IsToggleRun"]
 [connection signal="value_changed" from="Settings/TabContainer/Graphic Settings/HBoxContainer/VBoxContainer2/Camera FOV/CameraFOVSlider" to="Settings/TabContainer/Graphic Settings" method="SetCameraFOV"]
 [connection signal="value_changed" from="Settings/TabContainer/Graphic Settings/HBoxContainer/VBoxContainer2/Camera Sens/CameraSensSlider" to="Settings/TabContainer/Graphic Settings" method="SetCameraSens"]
+[connection signal="text_changed" from="Settings/TabContainer/Graphic Settings/HBoxContainer/VBoxContainer3/Camera FOV/FPSLimitText" to="Settings/TabContainer/Graphic Settings" method="SetFPSLimit"]
 [connection signal="pressed" from="Settings/Back" to="." method="ToggleSettingsPanel"]
